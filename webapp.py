@@ -1,4 +1,4 @@
-import os
+import os, sys
 from flask import Flask, render_template_string
 from flask_mail import Mail
 from flask_sqlalchemy import SQLAlchemy
@@ -9,7 +9,12 @@ def create_app():
     
     # Setup Flask app and app.config
     app = Flask(__name__)
-    app.config.from_pyfile('webapp.cfg')
+
+    config_file='conf/webapp.cfg'
+    if os.path.isfile(config_file):
+        app.config.from_pyfile(config_file)
+    else:
+        sys.exit("configuration file {} not found".format(config_file))
 
     # Initialize Flask extensions
     db = SQLAlchemy(app)                            # Initialize Flask-SQLAlchemy

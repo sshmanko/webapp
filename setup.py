@@ -6,5 +6,5 @@ setup(name='WebApp',
       author='Sergei Shmanko',
       author_email='a@a.com',
       url='https://github.com/sshmanko/webapp',
-      install_requires=['Flask-User'],
+      install_requires=['Flask-SQLAlchemy', 'Flask-WTF', 'Flask-Mail', 'Flask-User', 'Flask'],
       )
